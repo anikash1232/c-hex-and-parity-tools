@@ -22,7 +22,7 @@ int main(void) {
         unsigned char byte = (unsigned char)c;
 
         if (cal_count(byte) % 2 != 0) {
-            printf("Corruption detected!\n");
+            printf("\nCorruption detected!\n");
             return EXIT_FAILURE;
         }
 
