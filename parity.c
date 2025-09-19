@@ -6,7 +6,10 @@
 int countOnes(unsigned char x) {
     int count = 0;
     while (x) {
-        count += x & 1;
+        if ((x & 1) == 1){
+            count += 1;
+        }
+
         x >>= 1;
     }
     return count;
@@ -22,10 +25,11 @@ int main(void) {
         int ones = countOnes(byte);
 
         if (ones % 2 != 0) {
-            shifted |= 1;
+            putchar((byte << 1) | 1);
         }
-
-        putchar(shifted);
+        else {
+            putchar((byte << 1) | 0);
+        }
     }
 
     putchar('\n');
