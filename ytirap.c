@@ -4,14 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define PARITY_BIT 1
+
 int cal_count(unsigned char x){
     int count = 0;
     while (x) {
-        if ((x & 1) == 1){
-            count += 1;
+        if ((x & PARITY_BIT) == PARITY_BIT){
+            count += PARITY_BIT;
         }
 
-        x >>= 1;
+        x >>= PARITY_BIT;
     }
     return count;
 }
@@ -26,7 +28,7 @@ int main(void) {
             return EXIT_FAILURE;
         }
 
-        putchar(byte >> 1);
+        putchar(byte >> PARITY_BIT);
     }
 
     putchar('\n');

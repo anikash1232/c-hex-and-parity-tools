@@ -3,14 +3,16 @@
 
 #include <stdio.h>
 
+#define PARITY_BIT 1
+
 int countOnes(unsigned char x) {
     int count = 0;
     while (x) {
-        if ((x & 1) == 1){
-            count += 1;
+        if ((x & PARITY_BIT) == PARITY_BIT){
+            count += PARITY_BIT;
         }
 
-        x >>= 1;
+        x >>= PARITY_BIT;
     }
     return count;
 }
@@ -20,15 +22,13 @@ int main(void) {
     while ((c = getchar()) != EOF) {
         unsigned char byte = (unsigned char)c;
 
-        unsigned char shifted = byte << 1;
-
         int ones = countOnes(byte);
 
         if (ones % 2 != 0) {
-            putchar((byte << 1) | 1);
+            putchar((byte << PARITY_BIT) | PARITY_BIT);
         }
         else {
-            putchar((byte << 1) | 0);
+            putchar((byte << PARITY_BIT) | 0);
         }
     }
 
